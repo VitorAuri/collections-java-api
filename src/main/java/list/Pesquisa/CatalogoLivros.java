@@ -35,7 +35,7 @@ public class CatalogoLivros {
         return livrosPorIntervaloDeAnos;
     }
 
-    public List<Livro> pesquisarPorTitulo(String titulo) {
+    public Livro pesquisarPorTitulo(String titulo) {
         Livro livroEncontrado = null;
         if(!listaLivros.isEmpty()) {
             for(Livro livro : listaLivros) {
@@ -46,6 +46,16 @@ public class CatalogoLivros {
             }
         }
         return livroEncontrado;
+    }
+
+    public static void main(String[] args) {
+        CatalogoLivros catalogo = new CatalogoLivros();
+        catalogo.adicionarLivro("Nome Livro","Autor",2024);
+
+        System.out.println(catalogo.pesquisarPorTitulo("Nome Livro"));
+        System.out.println(catalogo.pesquisarPorAutor("Autor"));
+        System.out.println(catalogo.pesquisarPorIntervaloAnos(2024,2020));
+
     }
 
 }
