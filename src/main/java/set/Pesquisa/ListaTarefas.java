@@ -4,17 +4,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ListaTarefas {
-    Set<Tarefa> tarefaSet;
-    public ListaTarefas() { this.tarefaSet = new HashSet<>(); }
+    Set<Tarefa> tarefasPendentes;
+    Set<Tarefa> tarefasConcluidas;
+    public ListaTarefas() { this.tarefasConcluidas = new HashSet<>(); this.tarefasPendentes = new HashSet<>(); }
 
     public void adicionarTarefa(String descricao) {
-        tarefaSet.add(new Tarefa(descricao));
+        tarefasPendentes.add(new Tarefa(descricao));
     }
 
     public void removerTarefa(String descricao) {
         Set<Tarefa> tarefasParaApagar = null;
-        if(!tarefaSet.isEmpty()){
-            for (Tarefa t : tarefaSet) {
+        if(!tarefasPendentes.isEmpty()){
+            for (Tarefa t : tarefasPendentes) {
                 if(t.getDescricao().equalsIgnoreCase(descricao)) {
                     tarefasParaApagar.add(t);
                 }
@@ -24,16 +25,16 @@ public class ListaTarefas {
             System.out.println("Sem tarefas para apagar");
         }
         else{
-            tarefaSet.remove(tarefasParaApagar);
+            tarefasPendentes.remove(tarefasParaApagar);
         }
     }
 
     public Set<Tarefa> exibirTarefas() {
-        return tarefaSet;
+        return tarefasPendentes;
     }
 
     public int contarTarefas() {
-        return tarefaSet.size();
+        return tarefasPendentes.size();
     }
 
 
